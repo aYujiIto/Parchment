@@ -519,6 +519,11 @@ open class PagingViewController:
         collectionView.register(nib, forCellWithReuseIdentifier: String(describing: pagingItemType))
     }
 
+    /// Update layout transitionSize()
+    public func transitionSize() {
+        pagingController.transitionSize()
+    }
+
     // MARK: Private Methods
 
     private func configurePagingController() {
