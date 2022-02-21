@@ -508,7 +508,7 @@ final class PageViewManager {
         let newNextViewController = dataSource?.viewControllerAfter(oldNextViewController)
 
         if let oldPreviousViewController = previousViewController {
-            if oldPreviousViewController !== newNextViewController {
+            if oldPreviousViewController !== newNextViewController && oldPreviousViewController != oldNextViewController {
                 delegate?.removeViewController(oldPreviousViewController)
             }
         }
@@ -556,7 +556,7 @@ final class PageViewManager {
         let newPreviousViewController = dataSource?.viewControllerBefore(oldPreviousViewController)
 
         if let oldNextViewController = nextViewController {
-            if oldNextViewController !== newPreviousViewController {
+            if oldNextViewController !== newPreviousViewController && oldNextViewController != oldPreviousViewController {
                 delegate?.removeViewController(oldNextViewController)
             }
         }
