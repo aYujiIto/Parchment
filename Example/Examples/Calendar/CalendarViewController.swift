@@ -22,10 +22,12 @@ struct CalendarItem: PagingItem, Hashable, Comparable {
 }
 
 class CalendarViewController: UIViewController {
+    private let calendar: Calendar = .current
+    private let pagingViewController = PagingViewController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let pagingViewController = PagingViewController()
         pagingViewController.register(CalendarPagingCell.self, for: CalendarItem.self)
         pagingViewController.menuItemSize = .fixed(width: 48, height: 58)
         pagingViewController.textColor = UIColor.gray
@@ -40,8 +42,20 @@ class CalendarViewController: UIViewController {
         // Set our custom data source
         pagingViewController.infiniteDataSource = self
 
-        // Set the current date as the selected paging item
-        pagingViewController.select(pagingItem: CalendarItem(date: Date()))
+        // Set the current date as the selected paging item.
+        let today = calendar.startOfDay(for: Date())
+        pagingViewController.select(pagingItem: CalendarItem(date: today))
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Today",
+            style: .plain,
+            target: self,
+            action: #selector(selectToday))
+    }
+
+    @objc private func selectToday() {
+        let date = calendar.startOfDay(for: Date())
+        pagingViewController.select(pagingItem: CalendarItem(date: date), animated: true)
     }
 }
 
@@ -54,12 +68,14 @@ class CalendarViewController: UIViewController {
 extension CalendarViewController: PagingViewControllerInfiniteDataSource {
     func pagingViewController(_: PagingViewController, itemAfter pagingItem: PagingItem, isGenerateLayout: Bool) -> PagingItem? {
         let calendarItem = pagingItem as! CalendarItem
-        return CalendarItem(date: calendarItem.date.addingTimeInterval(86400))
+        let nextDate = calendar.date(byAdding: .day, value: 1, to: calendarItem.date)!
+        return CalendarItem(date: nextDate)
     }
 
     func pagingViewController(_: PagingViewController, itemBefore pagingItem: PagingItem, isGenerateLayout: Bool) -> PagingItem? {
         let calendarItem = pagingItem as! CalendarItem
-        return CalendarItem(date: calendarItem.date.addingTimeInterval(-86400))
+        let previousDate = calendar.date(byAdding: .day, value: -1, to: calendarItem.date)!
+        return CalendarItem(date: previousDate)
     }
 
     func pagingViewController(_: PagingViewController, viewControllerFor pagingItem: PagingItem) -> UIViewController {

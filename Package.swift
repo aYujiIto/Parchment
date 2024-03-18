@@ -1,9 +1,9 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.9
 import PackageDescription
 
 let package = Package(
     name: "Parchment",
-    platforms: [.iOS("9.0")],
+    platforms: [.iOS(.v12)],
     products: [
         .library(name: "Parchment", targets: ["Parchment"]),
     ],
@@ -11,11 +11,9 @@ let package = Package(
         .target(
             name: "Parchment",
             path: "Parchment",
-            linkerSettings: [
-                .unsafeFlags([
-                    "-weak_framework", "SwiftUI",
-                ]),
+            resources: [
+                .copy("PrivacyInfo.xcprivacy")
             ]
-        ),
+        )
     ]
 )

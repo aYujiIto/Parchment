@@ -57,7 +57,7 @@ extension SizeDelegateViewController: PagingViewControllerSizeDelegate {
     // city title. Parchment does not support self-sizing cells at
     // the moment, so we have to handle the calculation ourself. We
     // can access the title string by casting the paging item to a
-    // PagingTitleItem, which is the PagingItem type used by
+    // PagingIndexItem, which is the PagingItem type used by
     // FixedPagingViewController.
     func pagingViewController(_ pagingViewController: PagingViewController, widthForPagingItem pagingItem: PagingItem, isSelected: Bool) -> CGFloat {
         guard let item = pagingItem as? PagingIndexItem else { return 0 }

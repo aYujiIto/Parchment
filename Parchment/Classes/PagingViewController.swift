@@ -353,6 +353,8 @@ open class PagingViewController:
         super.init(coder: coder)
         collectionView.delegate = self
         configurePagingController()
+        // Register default cell
+        register(PagingTitleCell.self, for: PagingIndexItem.self)
     }
 
     // MARK: Public Methods

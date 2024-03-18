@@ -1,5 +1,6 @@
 <p align="center">
-  <img src="https://rechsteiner-parchment.s3.eu-central-1.amazonaws.com/parchment-title-3.png" width="240" height="70" />
+  <img src="https://raw.githubusercontent.com/rechsteiner/Parchment/main/.images/title-light-mode.png#gh-light-mode-only" width="240" height="70" />
+  <img src="https://raw.githubusercontent.com/rechsteiner/Parchment/main/.images/title-dark-mode.png#gh-dark-mode-only" width="240" height="70" />
 </p>
 
 <p align="center">
@@ -9,17 +10,19 @@
 </p>
 
 <p align="center">
-  <a href="https://circleci.com/gh/rechsteiner/Parchment"><img src="https://circleci.com/gh/rechsteiner/Parchment/tree/master.svg?style=shield&circle-token=8e4da6c8bf09271f72f32bf3c7a7c9d743ff50fb" /></a>
-  <a href="https://cocoapods.org/pods/Parchment"><img src="https://img.shields.io/cocoapods/v/Parchment.svg" /></a>
-  <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg" /></a>
+  <a href="https://github.com/rechsteiner/Parchment/actions/workflows/parchment.yml"><img src="https://github.com/rechsteiner/Parchment/actions/workflows/parchment.yml/badge.svg" /></a>
+</p>
+
+<p align="center">
+  ✨ <strong>New beta is out!</strong> Features a new and improved API for SwiftUI <a href="https://github.com/rechsteiner/Parchment/releases/tag/v4.0.0-beta">Try it now.</a>
 </p>
 
 <br/>
 
 <p align="center">
-  <img src="https://rechsteiner-parchment.s3.eu-central-1.amazonaws.com/parchment-delegate.gif" alt="Cities Example" />
-  <img src="https://rechsteiner-parchment.s3.eu-central-1.amazonaws.com/parchment-unplash.gif" alt="Unsplash Example" />
-  <img src="https://rechsteiner-parchment.s3.eu-central-1.amazonaws.com/parchment-calendar.gif" alt="Calendar Example" />
+  <img src="https://raw.githubusercontent.com/rechsteiner/Parchment/main/.images/example-cities.gif" alt="Cities Example" />
+  <img src="https://raw.githubusercontent.com/rechsteiner/Parchment/main/.images/example-unsplash.gif" alt="Unsplash Example" />
+  <img src="https://raw.githubusercontent.com/rechsteiner/Parchment/main/.images/example-calendar.gif" alt="Calendar Example" />
 </p>
 
 ## Features
@@ -43,10 +46,8 @@ Parchment lets you page between view controllers while showing any type of gener
   - [Reloading data](#reloading-data)
   - [Delegate](#delegate)
   - [Size delegate](#size-delegate)
-  - [Selecting items](#selecting-items)
 - [Customization](#customization)
 - [Installation](#installation)
-- [Acknowledgements](#acknowledgements)
 - [Changelog](#changelog)
 - [Licence](#licence)
 
@@ -83,7 +84,7 @@ extension ViewController: PagingViewControllerDataSource {
     }
 
     func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
-        return PagingTitleItem(title: "View \(index)", index: index)
+        return PagingIndexItem(title: "View \(index)", index: index)
     }
 }
 ```
@@ -102,7 +103,7 @@ Read more: [Using the data source](/Documentation/data-source.md)
 
 ### Infinite data source
 
-Using `PagingViewControllerDataSource` means you need to know how many view controllers to display. If you’re creating something like a [calendar](), the number of view controllers can be infinitely large. In that case you can use the `PagingViewControllerInfiniteDataSource` protocol:
+Using `PagingViewControllerDataSource` means you need to know how many view controllers to display. If you’re creating something like a calendar, the number of view controllers can be infinitely large. In that case you can use the `PagingViewControllerInfiniteDataSource` protocol:
 
 ```Swift
 extension ViewController: PagingViewControllerInfiniteDataSource {
@@ -504,15 +505,15 @@ Parchment will be compatible with the lastest public release of Swift.
 
 ### Requirements
 
-- iOS 9.0+
-- Xcode 8.0+
+- iOS 12.0+
+- Xcode 14.0+
 
 ### CocoaPods
 
 Parchment is available through [CocoaPods](https://cocoapods.org). To install it, add the following to your `Podfile`:
 
 ```
-pod 'Parchment', '~> 3.2'
+pod 'Parchment', '~> 3.3'
 ```
 
 ### Swift Package Manager
@@ -520,7 +521,7 @@ pod 'Parchment', '~> 3.2'
 Parchment is available through [Swift Package Manager](https://swift.org/package-manager/). Add Parchment as a dependency to your `Package.swift`:
 
 ```Swift
-.package(url: "https://github.com/rechsteiner/Parchment", from: "3.2.0")
+.package(url: "https://github.com/rechsteiner/Parchment", from: "3.3.0")
 ```
 
 ### Carthage
@@ -528,7 +529,7 @@ Parchment is available through [Swift Package Manager](https://swift.org/package
 Parchment also supports [Carthage](https://github.com/Carthage/Carthage). To install it, add the following to your `Cartfile`:
 
 ```
-github "rechsteiner/Parchment" ~> 3.2
+github "rechsteiner/Parchment" ~> 3.3
 ```
 
 See [this guide](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application) for more details on using Carthage.
@@ -539,4 +540,4 @@ This can be found in the [CHANGELOG](/CHANGELOG.md) file.
 
 ## Licence
 
-Parchment is released under the MIT license. See [LICENSE](/LICENSE.md) for details.
+Parchment is released under the MIT license. See [LICENSE](/LICENSE) for details.

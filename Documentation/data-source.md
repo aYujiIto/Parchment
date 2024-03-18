@@ -29,7 +29,7 @@ class ViewController: UIViewController {
 }
 ```
 
-In our data source implementation we set the number of view controllers equal to the number of items in our cities array, and return an instance of `PagingTitleItem` with the title of each city:
+In our data source implementation we set the number of view controllers equal to the number of items in our cities array, and return an instance of `PagingIndexItem` with the title of each city:
 
 ```Swift
 extension ViewController: PagingViewControllerDataSource {
